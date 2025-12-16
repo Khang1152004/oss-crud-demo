@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OSS Demo - Tasks CRUD</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div>
+        <h1>Tasks CRUD Demo</h1>
+        <p class="muted">Frontend (HTML/JS) ↔ Backend (PHP JSON API)</p>
+      </div>
+      <div class="pill" id="apiStatus">API: unknown</div>
+    </header>
+
+    <section class="card">
+      <h2>Tạo task</h2>
+      <form id="createForm" class="row">
+        <input name="title" maxlength="80" placeholder="Nhập tiêu đề task..." required />
+        <select name="priority">
+          <option value="LOW">LOW</option>
+          <option value="MED" selected>MED</option>
+          <option value="HIGH">HIGH</option>
+        </select>
+        <button type="submit">Add</button>
+      </form>
+      <div class="row">
+        <input id="search" placeholder="Tìm theo tiêu đề..." />
+        <select id="filterDone">
+          <option value="all" selected>Tất cả</option>
+          <option value="todo">Chưa xong</option>
+          <option value="done">Đã xong</option>
+        </select>
+        <button id="btnRefresh" type="button">Refresh</button>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Thống kê</h2>
+        <div id="stats" class="stats">—</div>
+      </div>
+
+      <div class="card">
+        <h2>Danh sách</h2>
+        <div id="list" class="list">Loading...</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Log</h2>
+      <pre id="log" class="log">—</pre>
+    </section>
+  </main>
+
+  <dialog id="editDlg">
+    <form method="dialog" id="editForm" class="dlg">
+      <h3>Edit task</h3>
+      <input type="hidden" name="id" />
+      <label>Title</label>
+      <input name="title" maxlength="80" required />
+      <label>Priority</label>
+      <select name="priority">
+        <option value="LOW">LOW</option>
+        <option value="MED">MED</option>
+        <option value="HIGH">HIGH</option>
+      </select>
+      <menu class="dlgRow">
+        <button value="cancel">Cancel</button>
+        <button id="btnSave" value="ok">Save</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script src="./app.js"></script>
+</body>
+</html>
