@@ -1,12 +1,17 @@
 <?php
-require_once __DIR__ . '/config.php';
+// CORS (cho phép GitHub Pages gọi sang InfinityFree)
+header("Access-Control-Allow-Origin: https://khang1152004.github.io");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, X-API-KEY");
+header("Access-Control-Max-Age: 86400");
+header("Content-Type: application/json; charset=utf-8");
 
-header('Content-Type: application/json; charset=utf-8');
-header('Access-Control-Allow-Origin: ' . CORS_ALLOW_ORIGIN);
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, X-API-KEY');
+// Trả lời preflight
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+  http_response_code(200);
+  exit;
+}
 
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(200); exit; }
 
 function json_out($data, $code=200) {
   http_response_code($code);
