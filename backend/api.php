@@ -1,14 +1,17 @@
 <?php
 // CORS (cho phép GitHub Pages gọi sang InfinityFree)
-header("Access-Control-Allow-Origin: https://khang1152004.github.io");
+$allowed_origin = "https://khang1152004.github.io";
+header("Access-Control-Allow-Origin: " . $allowed_origin);
+header("Vary: Origin");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, X-API-KEY");
 header("Access-Control-Max-Age: 86400");
 header("Content-Type: application/json; charset=utf-8");
 
-// Trả lời preflight
+// Preflight phải trả 200 trước mọi logic khác
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
   http_response_code(200);
+  echo "{}";
   exit;
 }
 
