@@ -34,10 +34,3 @@ jobs:
 
       - uses: actions/deploy-pages@v4
 
-  smoke_test_backend_render:
-    needs: ci
-    runs-on: ubuntu-latest
-    steps:
-      - name: Call Render backend ping
-        run: |
-          curl -sS "https://oss-crud-demo.onrender.com" | head -c 300
