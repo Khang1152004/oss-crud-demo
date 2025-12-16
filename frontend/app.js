@@ -1,7 +1,7 @@
 // Cấu hình đường dẫn API theo cách deploy của bạn
 // Nếu upload cả 2 folder dưới public_html/: dùng "../backend/api.php"
 // Nếu frontend nằm root và backend ở /backend: dùng "./backend/api.php"
-const API_URL = "../backend/api.php";
+const API_URL = "https://khangdemo.infinityfreeapp.com/api.php";
 
 // Đặt giống với backend/config.php
 const API_KEY = "DEMO_KEY_123456";
